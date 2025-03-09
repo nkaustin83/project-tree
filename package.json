@@ -53,4 +53,12 @@
     "@types/axios": "^0.9.36",
     "@types/vis": "^4.21.27"
   }
+  "scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "postbuild": "if [ ! -s build/index.html ]; then echo 'Build failed: index.html is empty'; exit 1; fi",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+}
+
 }
