@@ -6,11 +6,11 @@
     <meta name="theme-color" content="#000000" />
     <meta name="description" content="Project Tree: A sleek data capture overlay for AEC firms using Procore RFI timelines." />
     <title>Project Tree</title>
-    <link rel="stylesheet" href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" />
+    <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!-- Vite will inject the script tag during build -->
+    <script defer src="/static/js/bundle.js"></script>
   </body>
 </html>

@@ -26,11 +26,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "start": "vite",
+  "build": "vite build",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,14 +51,8 @@
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
-    "@types/vis": "^4.21.27"
+    "@types/vis": "^4.21.27",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.2.1"
   }
-  "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "postbuild": "if [ ! -s build/index.html ]; then echo 'Build failed: index.html is empty'; exit 1; fi",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-}
-
 }
