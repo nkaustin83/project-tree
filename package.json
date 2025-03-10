@@ -26,11 +26,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "vite",
-  "build": "vite build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject"
-},
+    "start": "vite",
+    "build": "vite build",
+    "postbuild": "echo Moving index.html && sleep 1 && cp -f dist/public/index.html dist/index.html || echo Copy failed",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
