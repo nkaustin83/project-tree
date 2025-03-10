@@ -17,7 +17,8 @@ const App: React.FC = () => {
   const projectStartDate = '2025-02-01';
   const interactions = [
     { id: 0, type: 'ProjectStart', content: 'Project Start', date: '2025-02-01', daysFromStart: 0 },
-    { id: 1, type: 'RFI', content: 'TEST RFI 001', date: '2025-03-01', daysFromStart: 28 }
+    { id: 1, type: 'RFI', content: 'TEST RFI 001', date: '2025-03-01', daysFromStart: 28, status: 'Open' },
+    { id: 2, type: 'RFI', content: 'TEST RFI 002', date: '2025-03-15', daysFromStart: 42, status: 'In Progress' }
   ];
 
   return (
