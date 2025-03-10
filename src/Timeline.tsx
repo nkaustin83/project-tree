@@ -28,7 +28,10 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
   const hashHeight = 10; // Default hash mark height
   const symbolRadius = 5; // Default symbol radius
 
-  const getXPosition = (days: number) => (days / maxDays) * (width - 40) + 20;
+  const getXPosition = (days: number) => {
+    const x = (days / maxDays) * (width - 40) + 20;
+    return Math.max(20, Math.min(x, width - 20)); // Clamp x between 20 and 780
+  };
 
   return (
     <div className="custom-timeline">
@@ -42,9 +45,26 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
           const isHovered = hoveredId === item.id;
           const hashScale = isHovered ? 0.5 : 1; // Shrink hash on hover
           const symbolScale = isHovered ? 1.5 : 1; // Enlarge symbol on hover
-          const statusColor = item.status === 'Open' ? '#ff4d4d' :
+          const statusColor = item.type === 'ProjectStart' ? '#00bcd4' :
+                            item.status === 'Open' ? '#ff4d4d' :
                             item.status === 'In Progress' ? '#ffa500' :
-                            item.status === 'Resolved' ? '#4caf50' : '#00bcd4'; // Cyan for Project Start
+                            item.status === 'Resolved' ? '#4caf50' : '#00bcd4';
+
+          let dialogueX = x - 50; // Default left-aligned
+          if (x - 50 < 20) {
+            dialogueX = 20; // Clamp left edge
+          } else if (x + 50 > width - 20) {
+            dialogueX = width - 100; // Clamp right edge
+          }
+
+          // Adjust text width dynamically if text is too long
+          const textContent = item.type === 'ProjectStart' ? `Project Start (${item.date})` : `RFI (${item.status || 'Open'})`;
+          const textWidth = textContent.length * 6; // Rough estimate (6px per char)
+          if (textWidth > 100) {
+            dialogueX = x - (textWidth / 2); // Center based on text width
+            if (dialogueX < 20) dialogueX = 20;
+            if (dialogueX + textWidth > width - 20) dialogueX = width - 20 - textWidth;
+          }
 
           return (
             <g key={item.id}>
@@ -62,7 +82,7 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
                 cx={x}
                 cy={lineY - 10}
                 r={symbolRadius * symbolScale}
-                fill={item.type === 'ProjectStart' ? '#00bcd4' : statusColor}
+                fill={statusColor}
                 onMouseEnter={() => setHoveredId(item.id)}
                 onMouseLeave={() => setHoveredId(null)}
                 onClick={() => setHoveredId(item.id)}
@@ -72,9 +92,9 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
               {isHovered && (
                 <g>
                   <rect
-                    x={x - 50}
-                    y={lineY - 40} // Adjusted to fit within SVG
-                    width="100"
+                    x={dialogueX}
+                    y={lineY - 40}
+                    width={textWidth > 100 ? textWidth : 100}
                     height="20"
                     fill="#444"
                     stroke="#aaa"
@@ -82,13 +102,13 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
                     rx="5"
                   />
                   <text
-                    x={x}
+                    x={dialogueX + (textWidth > 100 ? textWidth / 2 : 50)} // Center text dynamically
                     y={lineY - 25}
                     fill="white"
                     textAnchor="middle"
                     fontSize="12"
                   >
-                    {item.type === 'ProjectStart' ? `Project Start (${item.date})` : `RFI (${item.status || 'Open'})`}
+                    {textContent}
                   </text>
                 </g>
               )}
