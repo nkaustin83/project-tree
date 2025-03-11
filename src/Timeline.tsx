@@ -10,11 +10,13 @@ interface TimelineProps {
 }
 
 const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) => {
+  console.log('Timeline props:', { interactions, projectStartDate });
   const [hoveredId, setHoveredId] = useState<string | null>(null);
   const svgRef = useRef<SVGSVGElement>(null);
 
   const startDate = new Date(projectStartDate);
   const totalDays = interactions.reduce((max, item) => Math.max(max, item.day), 0);
+  console.log('Calculated totalDays:', totalDays);
   const maxDays = Math.max(totalDays, 60); // Ensure line extends to "10 meters" (e.g., 60 days)
   const width = 800;
   const height = 100;
@@ -26,7 +28,6 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
     return Math.max(20, Math.min(x, width - 20));
   };
 
-  // Get color based on interaction type and status (from Claude)
   const getInteractionColor = (interaction: Interaction): string => {
     const typeColors = {
       rfi: { base: '#0066cc', light: '#4d94ff', dark: '#004080' },
@@ -58,7 +59,6 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
     return typeColors[interaction.type][shade];
   };
 
-  // Render hover card with type-specific details (from Claude)
   const renderHoverCard = (item: Interaction) => {
     if (!item || hoveredId !== item.id) return null;
 
@@ -146,35 +146,42 @@ const Timeline: React.FC<TimelineProps> = ({ interactions, projectStartDate }) =
     <div className="custom-timeline">
       <svg ref={svgRef} width={width} height={height + 50}>
         <line x1="20" y1={lineY} x2={width - 20} y2={lineY} stroke="#aaa" strokeWidth="2" />
-        {interactions.map((item) => {
-          const x = getXPosition(item.day);
-          const isHovered = hoveredId === item.id;
-          const hashScale = isHovered ? 0.5 : 1;
+        {interactions.length > 0 ? (
+          interactions.map((item) => {
+            console.log('Rendering item:', item);
+            const x = getXPosition(item.day);
+            const isHovered = hoveredId === item.id;
+            const hashScale = isHovered ? 0.5 : 1;
 
-          return (
-            <g key={item.id}>
-              <line
-                x1={x}
-                y1={lineY}
-                x2={x}
-                y2={lineY + hashHeight * hashScale}
-                stroke="#aaa"
-                strokeWidth="1"
-              />
-              <LeafBlowerSymbol
-                x={x}
-                y={lineY - 10}
-                type={item.type}
-                status={item.status}
-                onHover={(hovered: boolean) => {
-                  if (hovered) setHoveredId(item.id);
-                  else setHoveredId(null);
-                }}
-              />
-              {renderHoverCard(item)}
-            </g>
-          );
-        })}
+            return (
+              <g key={item.id}>
+                <line
+                  x1={x}
+                  y1={lineY}
+                  x2={x}
+                  y2={lineY + hashHeight * hashScale}
+                  stroke="#aaa"
+                  strokeWidth="1"
+                />
+                <LeafBlowerSymbol
+                  x={x}
+                  y={lineY - 10}
+                  type={item.type}
+                  status={item.status}
+                  onHover={(hovered: boolean) => {
+                    if (hovered) setHoveredId(item.id);
+                    else setHoveredId(null);
+                  }}
+                />
+                {renderHoverCard(item)}
+              </g>
+            );
+          })
+        ) : (
+          <text x={width / 2} y={height / 2} textAnchor="middle" fontSize="16px">
+            No interactions to display
+          </text>
+        )}
       </svg>
     </div>
   );

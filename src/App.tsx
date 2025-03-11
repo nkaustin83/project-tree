@@ -15,6 +15,7 @@ const App: React.FC = () => {
     setTokenData({ token: 'Updated Token' });
   }, [tokenData.token]);
 
+  console.log('Sample data:', sampleTimelineData.interactions);
   return (
     <div className="App">
       <header className="App-header">
