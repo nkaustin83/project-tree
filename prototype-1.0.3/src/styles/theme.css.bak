@@ -1,0 +1,236 @@
+/* theme.css - Space-themed color system for AECent */
+:root {
+    /* Base theme colors */
+    --color-background: #1A1A1A;        /* Deep Space Black */
+    --color-text: #FFFFFF;              /* Starlight White */
+    --color-critical: #FF3D5A;          /* Cosmic Red */
+    --color-info: #00B7EB;              /* Electric Blue */
+    --color-success: #39FF14;           /* Laser Green */
+    --color-link: #FF1AFF;              /* Galactic Pink */
+    --color-warning: #FFFF33;           /* Solar Yellow */
+    
+    /* Secondary colors */
+    --color-background-light: #2D2D2D;  /* Lighter shade of deep space */
+    --color-background-dark: #101010;   /* Darker shade for contrast */
+    --color-text-muted: #B7B7B7;        /* Dimmed starlight */
+    --color-border: #444444;            /* Space dust */
+    
+    /* Interaction type colors */
+    --color-rfi: #00B7EB;               /* Electric Blue */
+    --color-submittal: #39FF14;         /* Laser Green */
+    --color-email: #FF1AFF;             /* Galactic Pink */
+    --color-change: #FFFF33;            /* Solar Yellow */
+    --color-financial: #1A85FF;         /* Nebula Blue */
+    
+    /* Status colors */
+    --color-status-open: #FFFF33;       /* Solar Yellow */
+    --color-status-in-progress: #00B7EB; /* Electric Blue */
+    --color-status-resolved: #39FF14;   /* Laser Green */
+    --color-status-critical: #FF3D5A;   /* Cosmic Red */
+    
+    /* Chart colors */
+    --color-chart-grid: #444444;        /* Space dust */
+    --color-chart-axis: #888888;        /* Asteroid Grey */
+    --color-chart-tooltip: #1A1A1A;     /* Deep Space Black */
+    
+    /* Shadows */
+    --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.5);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.7);
+    
+    /* Button colors */
+    --color-button-primary: #00B7EB;    /* Electric Blue */
+    --color-button-primary-hover: #33C5F0; /* Lighter Electric Blue */
+    --color-button-secondary: #2D2D2D;  /* Lighter Deep Space */
+    --color-button-secondary-hover: #444444; /* Even Lighter Deep Space */
+    --color-button-danger: #FF3D5A;     /* Cosmic Red */
+    --color-button-danger-hover: #FF6A80; /* Lighter Cosmic Red */
+    --color-button-success: #39FF14;    /* Laser Green */
+    --color-button-success-hover: #58FF3C; /* Lighter Laser Green */
+    
+    /* Animation durations */
+    --transition-fast: 150ms;
+    --transition-medium: 300ms;
+    --transition-slow: 500ms;
+  }
+  
+  /* Apply dark theme to html and body */
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+  }
+  
+  a {
+    color: var(--color-link);
+    transition: color var(--transition-fast) ease;
+  }
+  
+  a:hover {
+    color: var(--color-link);
+    filter: brightness(1.2);
+  }
+  
+  /* Button styles */
+  .button, button {
+    background-color: var(--color-button-primary);
+    color: var(--color-text);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--transition-fast) ease;
+  }
+  
+  .button:hover, button:hover {
+    background-color: var(--color-button-primary-hover);
+  }
+  
+  .button-secondary {
+    background-color: var(--color-button-secondary);
+  }
+  
+  .button-secondary:hover {
+    background-color: var(--color-button-secondary-hover);
+  }
+  
+  .button-danger {
+    background-color: var(--color-button-danger);
+  }
+  
+  .button-danger:hover {
+    background-color: var(--color-button-danger-hover);
+  }
+  
+  .button-success {
+    background-color: var(--color-button-success);
+  }
+  
+  .button-success:hover {
+    background-color: var(--color-button-success-hover);
+  }
+  
+  /* Status color classes */
+  .status-open {
+    color: var(--color-status-open);
+  }
+  
+  .status-in-progress {
+    color: var(--color-status-in-progress);
+  }
+  
+  .status-resolved {
+    color: var(--color-status-resolved);
+  }
+  
+  .status-critical {
+    color: var(--color-status-critical);
+  }
+  
+  .bg-status-open {
+    background-color: var(--color-status-open);
+    color: var(--color-background);
+  }
+  
+  .bg-status-in-progress {
+    background-color: var(--color-status-in-progress);
+  }
+  
+  .bg-status-resolved {
+    background-color: var(--color-status-resolved);
+    color: var(--color-background);
+  }
+  
+  .bg-status-critical {
+    background-color: var(--color-status-critical);
+  }
+  
+  /* Type color classes */
+  .type-rfi {
+    color: var(--color-rfi);
+  }
+  
+  .type-submittal {
+    color: var(--color-submittal);
+  }
+  
+  .type-email {
+    color: var(--color-email);
+  }
+  
+  .type-change {
+    color: var(--color-change);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.5); /* For better readability */
+  }
+  
+  .type-financial {
+    color: var(--color-financial);
+  }
+  
+  .bg-type-rfi {
+    background-color: var(--color-rfi);
+  }
+  
+  .bg-type-submittal {
+    background-color: var(--color-submittal);
+    color: var(--color-background);
+  }
+  
+  .bg-type-email {
+    background-color: var(--color-email);
+  }
+  
+  .bg-type-change {
+    background-color: var(--color-change);
+    color: var(--color-background);
+  }
+  
+  .bg-type-financial {
+    background-color: var(--color-financial);
+  }
+  
+  /* Card styles */
+  .card {
+    background-color: var(--color-background-light);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  /* Form elements */
+  input, select, textarea {
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 2px rgba(0, 183, 235, 0.2);
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+  }

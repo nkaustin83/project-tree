@@ -1,0 +1,367 @@
+/* src/styles/theme.css - Space-themed color system for AECent */
+:root {
+  /* Base theme colors */
+  --color-space-black: #1A1A1A;        /* Deep Space Black */
+  --color-space-dark: #2D2D2D;         /* Lighter shade of deep space */
+  --color-space-gray: #444444;         /* Space dust */
+  --color-space-light-gray: #777777;   /* Asteroid Grey */
+  --color-text: #FFFFFF;               /* Starlight White */
+  --color-text-muted: #BBBBBB;         /* Dimmed starlight */
+  
+  /* Status colors */
+  --color-critical: #FF3D5A;           /* Cosmic Red */
+  --color-open: #FFFF33;               /* Solar Yellow */
+  --color-in-progress: #00B7EB;        /* Electric Blue */
+  --color-resolved: #39FF14;           /* Laser Green */
+  
+  /* Type colors */
+  --color-rfi: #00B7EB;                /* Electric Blue */
+  --color-submittal: #39FF14;          /* Laser Green */
+  --color-email: #FF1AFF;              /* Galactic Pink */
+  --color-change: #FFFF33;             /* Solar Yellow */
+  --color-financial: #1A85FF;          /* Nebula Blue */
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(26, 26, 26, 0.7);   /* Translucent background */
+  --glass-border: rgba(255, 255, 255, 0.1); /* Subtle border */
+  --glass-highlight: rgba(255, 255, 255, 0.1); /* Subtle inner highlight */
+  --glass-shadow: rgba(0, 0, 0, 0.3);  /* Subtle shadow */
+  
+  /* Shadows and glows */
+  --shadow-small: 0 2px 10px rgba(0, 0, 0, 0.2);  /* Small elements */
+  --shadow-medium: 0 4px 20px rgba(0, 0, 0, 0.3); /* Medium elements */
+  --shadow-large: 0 8px 30px rgba(0, 0, 0, 0.4);  /* Large elements */
+  
+  --glow-critical: 0 0 20px rgba(255, 61, 90, 0.7); /* Critical items */
+  --glow-warning: 0 0 15px rgba(255, 255, 51, 0.6); /* Warning items */
+  --glow-success: 0 0 15px rgba(57, 255, 20, 0.5);  /* Success items */
+  --glow-info: 0 0 15px rgba(0, 183, 235, 0.5);     /* Info items */
+  
+  /* Button colors */
+  --color-button-primary: #00B7EB;     /* Electric Blue */
+  --color-button-primary-hover: #33C5F0; /* Lighter Electric Blue */
+  --color-button-secondary: #2D2D2D;   /* Lighter Deep Space */
+  --color-button-secondary-hover: #444444; /* Even Lighter Deep Space */
+  --color-button-danger: #FF3D5A;      /* Cosmic Red */
+  --color-button-danger-hover: #FF6A80; /* Lighter Cosmic Red */
+  --color-button-success: #39FF14;     /* Laser Green */
+  --color-button-success-hover: #58FF3C; /* Lighter Laser Green */
+  
+  /* Animation durations */
+  --transition-fast: 0.15s;
+  --transition-medium: 0.3s;
+  --transition-slow: 0.5s;
+}
+
+/* Field theme overrides (default is space theme) */
+.theme-field {
+  /* Keep space theme defaults */
+}
+
+/* Office theme overrides */
+.theme-office {
+  --color-background: #F0F2F5;        /* Light Office Grey */
+  --color-text: #333333;              /* Dark Office Text */
+  --color-critical: #D3302F;          /* Office Red */
+  --color-info: #0078D4;              /* Office Blue */
+  --color-success: #107C41;           /* Office Green */
+  --color-link: #6264A7;              /* Office Purple */
+  --color-warning: #FFC83D;           /* Office Yellow */
+  
+  --color-background-light: #FFFFFF;  /* White */
+  --color-background-dark: #E1E1E1;   /* Office Light Grey */
+  --color-text-muted: #666666;        /* Office Medium Grey */
+  --color-border: #CCCCCC;            /* Office Border Grey */
+  
+  --color-rfi: #0078D4;               /* Office Blue */
+  --color-submittal: #107C41;         /* Office Green */
+  --color-email: #6264A7;             /* Office Purple */
+  --color-change: #F8C100;            /* Office Gold */
+  --color-financial: #038387;         /* Office Teal */
+  
+  --color-status-open: #FFC83D;       /* Office Yellow */
+  --color-status-in-progress: #0078D4; /* Office Blue */
+  --color-status-resolved: #107C41;   /* Office Green */
+  --color-status-critical: #D3302F;   /* Office Red */
+  
+  --glass-background: rgba(255, 255, 255, 0.7);
+  --glass-blur: 10px;
+  --glass-border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Apply dark theme to html and body */
+html, body {
+  background-color: var(--color-space-black);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text);
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-in-progress);
+  text-decoration: none;
+  transition: color var(--transition-fast) ease;
+}
+
+a:hover {
+  color: var(--color-button-primary-hover);
+  text-decoration: underline;
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-medium);
+  transition: transform var(--transition-medium) ease, box-shadow var(--transition-medium) ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-large);
+}
+
+/* Etched Button styles */
+button, .button {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  border: 1px solid var(--glass-border);
+  color: var(--color-text);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast) ease;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.15), /* Top inner highlight */
+    inset 0 -1px 0 rgba(0,0,0,0.15),       /* Bottom inner shadow */
+    0 1px 3px rgba(0,0,0,0.2);             /* Outer shadow */
+}
+
+button:hover, .button:hover {
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.25),
+    inset 0 -1px 0 rgba(0,0,0,0.15),
+    0 1px 3px rgba(0,0,0,0.3);
+}
+
+button:active, .button:active {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,0.2),
+    0 1px 0 rgba(255,255,255,0.05);
+}
+
+button:disabled, .button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+}
+
+/* Primary button */
+button.primary, .button.primary {
+  background: linear-gradient(to bottom, rgba(0,183,235,0.6) 0%, rgba(0,183,235,0.4) 100%);
+  border-color: rgba(0,183,235,0.5);
+  color: var(--color-text);
+}
+
+button.primary:hover, .button.primary:hover {
+  background: linear-gradient(to bottom, rgba(0,183,235,0.7) 0%, rgba(0,183,235,0.5) 100%);
+}
+
+/* Success button */
+button.success, .button.success {
+  background: linear-gradient(to bottom, rgba(57,255,20,0.4) 0%, rgba(57,255,20,0.2) 100%);
+  border-color: rgba(57,255,20,0.5);
+  color: var(--color-text);
+}
+
+button.success:hover, .button.success:hover {
+  background: linear-gradient(to bottom, rgba(57,255,20,0.5) 0%, rgba(57,255,20,0.3) 100%);
+}
+
+/* Danger button */
+button.danger, .button.danger {
+  background: linear-gradient(to bottom, rgba(255,61,90,0.4) 0%, rgba(255,61,90,0.2) 100%);
+  border-color: rgba(255,61,90,0.5);
+  color: var(--color-text);
+}
+
+button.danger:hover, .button.danger:hover {
+  background: linear-gradient(to bottom, rgba(255,61,90,0.5) 0%, rgba(255,61,90,0.3) 100%);
+}
+
+/* Status and type color utility classes */
+.text-critical { color: var(--color-critical); }
+.text-info { color: var(--color-in-progress); }
+.text-success { color: var(--color-resolved); }
+.text-warning { color: var(--color-open); }
+.text-muted { color: var(--color-text-muted); }
+
+.bg-critical { background-color: var(--color-critical); color: white; }
+.bg-info { background-color: var(--color-in-progress); color: white; }
+.bg-success { background-color: var(--color-resolved); color: white; }
+.bg-warning { background-color: var(--color-open); color: black; }
+
+.border-critical { border-color: var(--color-critical); }
+.border-info { border-color: var(--color-in-progress); }
+.border-success { border-color: var(--color-resolved); }
+.border-warning { border-color: var(--color-open); }
+
+/* Type-specific colors */
+.text-rfi { color: var(--color-rfi); }
+.text-submittal { color: var(--color-submittal); }
+.text-email { color: var(--color-email); }
+.text-change { color: var(--color-change); }
+.text-financial { color: var(--color-financial); }
+
+.bg-rfi { background-color: var(--color-rfi); color: white; }
+.bg-submittal { background-color: var(--color-submittal); color: black; }
+.bg-email { background-color: var(--color-email); color: white; }
+.bg-change { background-color: var(--color-change); color: black; }
+.bg-financial { background-color: var(--color-financial); color: white; }
+
+/* Status-specific colors */
+.text-status-open { color: var(--color-open); }
+.text-status-in-progress { color: var(--color-in-progress); }
+.text-status-resolved { color: var(--color-resolved); }
+.text-status-critical { color: var(--color-critical); }
+
+.bg-status-open { background-color: var(--color-open); color: black; }
+.bg-status-in-progress { background-color: var(--color-in-progress); color: white; }
+.bg-status-resolved { background-color: var(--color-resolved); color: black; }
+.bg-status-critical { background-color: var(--color-critical); color: white; }
+
+/* Animation keyframes */
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Critical item animation */
+.critical-item {
+  transform: scale(1.3);
+  animation: pulse 1.5s infinite;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* Responsive design variables */
+@media (min-width: 2560px) {
+  :root {
+    /* Scale up for 4K displays */
+    --shadow-small: 0 4px 15px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --shadow-large: 0 16px 40px rgba(0, 0, 0, 0.4);
+    
+    --glow-critical: 0 0 30px rgba(255, 61, 90, 0.7);
+    --glow-warning: 0 0 25px rgba(255, 255, 51, 0.6);
+    --glow-success: 0 0 25px rgba(57, 255, 20, 0.5);
+    --glow-info: 0 0 25px rgba(0, 183, 235, 0.5);
+  }
+  
+  html {
+    font-size: 18px; /* Base font size increase for 4K */
+  }
+  
+  button, .button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+  
+  input, select, textarea {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  .status-badge, .type-badge {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+/* High contrast mode for accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text: #FFFFFF;
+    --color-text-muted: #DDDDDD;
+    --glass-border: rgba(255, 255, 255, 0.3);
+  }
+  
+  .status-open {
+    background-color: #FFFF00;
+    color: #000000;
+  }
+  
+  .status-in-progress {
+    background-color: #0099FF;
+    color: #000000;
+  }
+  
+  .status-resolved {
+    background-color: #00FF00;
+    color: #000000;
+  }
+  
+  .status-critical {
+    background-color: #FF0000;
+    color: #FFFFFF;
+  }
+  
+  input, select, textarea {
+    border-width: 2px;
+  }
+}

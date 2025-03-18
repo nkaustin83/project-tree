@@ -1,0 +1,386 @@
+/* space-theme.css */
+:root {
+    /* Base theme colors */
+    --color-background: #1A1A1A;        /* Deep Space Black */
+    --color-text: #FFFFFF;              /* Starlight White */
+    --color-critical: #FF3D5A;          /* Cosmic Red */
+    --color-info: #00B7EB;              /* Electric Blue */
+    --color-success: #39FF14;           /* Laser Green */
+    --color-link: #FF1AFF;              /* Galactic Pink */
+    --color-warning: #FFFF33;           /* Solar Yellow */
+    
+    /* Secondary colors */
+    --color-background-light: #2D2D2D;  /* Lighter shade of deep space */
+    --color-background-dark: #101010;   /* Darker shade for contrast */
+    --color-text-muted: #B7B7B7;        /* Dimmed starlight */
+    --color-border: #444444;            /* Space dust */
+    
+    /* Interaction type colors */
+    --color-rfi: #00B7EB;               /* Electric Blue */
+    --color-submittal: #39FF14;         /* Laser Green */
+    --color-email: #FF1AFF;             /* Galactic Pink */
+    --color-change: #FFFF33;            /* Solar Yellow */
+    --color-financial: #1A85FF;         /* Nebula Blue */
+    
+    /* Status colors */
+    --color-status-open: #FFFF33;       /* Solar Yellow */
+    --color-status-in-progress: #00B7EB; /* Electric Blue */
+    --color-status-resolved: #39FF14;   /* Laser Green */
+    --color-status-critical: #FF3D5A;   /* Cosmic Red */
+    
+    /* Shadows */
+    --shadow-small: 0 2px 5px rgba(0, 0, 0, 0.5);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.6);
+    --shadow-large: 0 8px 24px rgba(0, 0, 0, 0.7);
+    
+    /* Animation timings */
+    --transition-fast: 150ms;
+    --transition-medium: 300ms;
+    --transition-slow: 500ms;
+  }
+  
+  /* Apply theme to base elements */
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+    margin-top: 0;
+  }
+  
+  /* Card elements with glassmorphism effect */
+  .space-card {
+    background-color: rgba(45, 45, 45, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(68, 68, 68, 0.5);
+    box-shadow: var(--shadow-medium);
+    padding: 16px;
+    color: var(--color-text);
+    transition: transform var(--transition-medium) ease, 
+                box-shadow var(--transition-medium) ease;
+  }
+  
+  .space-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+  }
+  
+  /* Buttons with glow effect */
+  .space-button {
+    background-color: var(--color-info);
+    color: var(--color-text);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition-medium) ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .space-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 183, 235, 0.4) 0%, rgba(0, 183, 235, 0) 70%);
+    opacity: 0;
+    transition: opacity var(--transition-medium) ease;
+    pointer-events: none;
+  }
+  
+  .space-button:hover {
+    background-color: #33C5F0; /* Lighter Electric Blue */
+    box-shadow: 0 0 15px rgba(0, 183, 235, 0.7);
+  }
+  
+  .space-button:hover::after {
+    opacity: 1;
+  }
+  
+  .space-button:active {
+    transform: scale(0.98);
+  }
+  
+  .space-button.success {
+    background-color: var(--color-success);
+  }
+  
+  .space-button.success:hover {
+    background-color: #58FF3C; /* Lighter Laser Green */
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.7);
+  }
+  
+  .space-button.danger {
+    background-color: var(--color-critical);
+  }
+  
+  .space-button.danger:hover {
+    background-color: #FF6A80; /* Lighter Cosmic Red */
+    box-shadow: 0 0 15px rgba(255, 61, 90, 0.7);
+  }
+  
+  /* Text input fields */
+  .space-input {
+    background-color: rgba(45, 45, 45, 0.5);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    color: var(--color-text);
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 100%;
+    transition: border-color var(--transition-fast) ease,
+                box-shadow var(--transition-fast) ease;
+  }
+  
+  .space-input:focus {
+    outline: none;
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 2px rgba(0, 183, 235, 0.25);
+  }
+  
+  .space-input::placeholder {
+    color: var(--color-text-muted);
+  }
+  
+  /* Metric cards */
+  .space-metric {
+    background-color: rgba(45, 45, 45, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    transition: transform var(--transition-medium) ease;
+  }
+  
+  .space-metric:hover {
+    transform: translateY(-2px);
+  }
+  
+  .space-metric-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .space-metric-label {
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+  
+  /* Status badges */
+  .space-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  
+  .space-badge.open {
+    background-color: var(--color-status-open);
+    color: var(--color-background-dark); /* Dark text on light background */
+  }
+  
+  .space-badge.in-progress {
+    background-color: var(--color-status-in-progress);
+    color: var(--color-text);
+  }
+  
+  .space-badge.resolved {
+    background-color: var(--color-status-resolved);
+    color: var(--color-background-dark); /* Dark text on light background */
+  }
+  
+  .space-badge.critical {
+    background-color: var(--color-status-critical);
+    color: var(--color-text);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 61, 90, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(255, 61, 90, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 61, 90, 0); }
+  }
+  
+  /* Timeline specific elements */
+  .space-timeline-line {
+    height: 2px;
+    background: linear-gradient(90deg, 
+      rgba(0, 183, 235, 0.7) 0%, 
+      rgba(57, 255, 20, 0.7) 50%, 
+      rgba(255, 255, 51, 0.7) 100%
+    );
+    box-shadow: 0 0 10px rgba(0, 183, 235, 0.5);
+  }
+  
+  .space-timeline-hash {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-text);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+  
+  .space-timeline-connector {
+    stroke-width: 1.5;
+    stroke-dasharray: 3,3;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  }
+  
+  /* Symbol glow effects */
+  .space-symbol {
+    filter: drop-shadow(0 0 4px currentColor);
+    transition: transform var(--transition-medium) ease, 
+                filter var(--transition-medium) ease;
+  }
+  
+  .space-symbol:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  
+  .space-symbol.critical {
+    animation: critical-pulse 1.5s infinite;
+  }
+  
+  @keyframes critical-pulse {
+    0% { filter: drop-shadow(0 0 4px var(--color-critical)); }
+    50% { filter: drop-shadow(0 0 12px var(--color-critical)); }
+    100% { filter: drop-shadow(0 0 4px var(--color-critical)); }
+  }
+  
+  /* Detail panel with glass effect */
+  .space-detail-panel {
+    background-color: rgba(45, 45, 45, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border-left: 2px solid var(--color-info);
+    box-shadow: var(--shadow-medium);
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+  
+  .space-detail-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .space-detail-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .space-detail-panel::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 3px;
+  }
+  
+  /* Star field background */
+  .space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle var(--transition-slow) infinite alternate;
+  }
+  
+  @keyframes twinkle {
+    0% { opacity: 0.2; }
+    100% { opacity: 0.8; }
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 768px) {
+    .space-card {
+      padding: 12px;
+    }
+    
+    .space-metric-value {
+      font-size: 20px;
+    }
+    
+    .space-button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .space-card {
+      padding: 10px;
+      border-radius: 8px;
+    }
+    
+    h1 { font-size: 20px; }
+    h2 { font-size: 18px; }
+    h3 { font-size: 16px; }
+    
+    .space-button {
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    
+    .space-metric {
+      padding: 10px;
+    }
+    
+    .space-metric-value {
+      font-size: 18px;
+    }
+    
+    .space-metric-label {
+      font-size: 12px;
+    }
+  }
+  
+  /* Create stars in the background */
+  .create-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .create-stars:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, white, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 40px 70px, white, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 50px 160px, white, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 90px 40px, white, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 130px 80px, white, rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 160px 120px, white, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+  }

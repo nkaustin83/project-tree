@@ -1,0 +1,109 @@
+/* src/components/auth/AuthCallback.css */
+.auth-callback-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #1A1A1A; /* Space theme */
+}
+
+.auth-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* 24px at 4K */
+}
+
+.loading-spinner {
+  width: 3rem; /* 48px at 4K */
+  height: 3rem;
+  border: 0.5rem solid rgba(242, 140, 56, 0.2); /* Faded orange */
+  border-top: 0.5rem solid #F28C38; /* Procore orange */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.auth-loading p {
+  font-size: 1.5rem; /* 24px at 4K */
+  color: #FFFFFF;
+  text-shadow: 0 0 0.5rem #FF3D5A; /* Red glow */
+}
+
+.auth-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* 16px at 4K */
+  padding: 2rem; /* 32px at 4K */
+  background: rgba(255, 255, 255, 0.05); /* Glassmorphism */
+  border-radius: 0.5rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.error-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; /* 48px at 4K */
+  height: 3rem;
+  background-color: #FF3D5A; /* Critical red */
+  border-radius: 50%;
+  font-size: 2rem; /* 32px at 4K */
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+.auth-error h2 {
+  font-size: 2rem; /* 32px at 4K */
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.error-message {
+  font-size: 1rem; /* 16px at 4K */
+  color: #FF3D5A;
+  text-align: center;
+  max-width: 20rem;
+}
+
+.retry-button {
+  padding: 0.75rem 1.5rem; /* 12px 24px at 4K */
+  font-size: 1.25rem; /* 20px at 4K */
+  background: linear-gradient(135deg, #F28C38, #FF3D5A);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retry-button:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.75rem 1.5rem rgba(242, 140, 56, 0.5);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 2560px) {
+  .loading-spinner { width: 2.5rem; height: 2.5rem; border-width: 0.4rem; }
+  .auth-loading p { font-size: 1.25rem; }
+  .auth-error h2 { font-size: 1.75rem; }
+  .error-icon { width: 2.5rem; height: 2.5rem; font-size: 1.75rem; }
+  .error-message { font-size: 0.875rem; }
+  .retry-button { font-size: 1rem; padding: 0.6rem 1.2rem; }
+}
+
+@media (max-width: 1440px) {
+  .loading-spinner { width: 2rem; height: 2rem; border-width: 0.3rem; }
+  .auth-loading p { font-size: 1rem; }
+  .auth-error h2 { font-size: 1.5rem; }
+  .error-icon { width: 2rem; height: 2rem; font-size: 1.5rem; }
+  .error-message { font-size: 0.75rem; }
+  .retry-button { font-size: 0.875rem; padding: 0.5rem 1rem; }
+}
