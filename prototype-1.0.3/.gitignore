@@ -1,0 +1,5 @@
+src/components/BentoGrid/
+src/components/panels/
+src/App.tsx
+src/App.css
+src/data/mockInteractions.ts
